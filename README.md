@@ -28,9 +28,37 @@ do{
     cin >> choice;
     
     if (choice ==1){
-      for(i=0; i<5; i++)
-        for(j=0; j<5; j++)
-          if (h.r[i][j].isVacant)
+      for (i=0; i<5; i++)
+      for (j=0; j<5; j++)
+      if (h.r[i][j].isVacant)
+      cout <<h.r[i][j].num<<"\n";
+      cout << "\n Enter any letter to proceed: ";
+      cin >> trash;
+      system ("cls");
+    }
+    
+    else if (choice ==2){
+       cout << "Input surname: ";
+       cin >> n;
+       cout << "Enter room number: ";
+       cin >> RoomNum;
+       cout << "Enter number of days: ";
+       cin >> d;
+       
+       for (i=0; i<5; i++)
+       for (j=0; j<5; j++)
+       if (h.r[i][j].num == RoomNum && h.r[i][j].isVacant){
+             h.r[i][j].isVacant = false;
+             strcpy(h.r[i][j].name, n);
+             h.r[i][j].days = d;
+             h.r[i][j].bill = h.r[i][j].bill;
+        }
+        
+        cout << "\nEnter any letter to proceed: ";
+        cin >> trash;
+        system ("cls");
+    }
+      
     
 
 
