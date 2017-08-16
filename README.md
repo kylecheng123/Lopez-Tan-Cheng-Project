@@ -5,7 +5,7 @@
 
 using namespace std;
 
-stuct room {
+struct room {
     char name [10];
     int days;
     int num;
@@ -16,6 +16,33 @@ stuct room {
 struct hotel {
     struct room r[5][5];
 };
+
+int SearchPerson(char n[], struct hotel h){
+	int i, j;
+	
+	for(i=0; i<5; i++)
+		for(j=0; j<5; j++)
+			if(strcmp(h.r[i][j].name, n)==0){
+				return h.r[i][j].num;
+				break;
+			}
+			return 0;
+}
+
+int main(){
+	int choice=0;
+	struct hotel h;
+	int i, d;
+	int j;
+	char n[10];
+	int RoomNum;
+	char trash;
+	
+	for (i=0;i<5;i++)
+		for(j=0;j<5;j++){
+			h.r[i][j].num = 100 + i * 100 +j + 1;
+			h.r[i][j].isVacant = true;
+		}
 
 do{
     cout << "Hotel Management\n";
@@ -29,10 +56,10 @@ do{
     
     if (choice ==1){
       for (i=0; i<5; i++)
-      for (j=0; j<5; j++)
-      if (h.r[i][j].isVacant)
-      cout <<h.r[i][j].num<<"\n";
-      cout << "\n Enter any letter to proceed: ";
+      	for (j=0; j<5; j++)
+      		if (h.r[i][j].isVacant)
+     		 cout <<h.r[i][j].num<<"\n";
+     	 cout << "\n Enter any letter to proceed: ";
       cin >> trash;
       system ("cls");
     }
@@ -46,12 +73,12 @@ do{
        cin >> d;
        
        for (i=0; i<5; i++)
-       for (j=0; j<5; j++)
-       if (h.r[i][j].num == RoomNum && h.r[i][j].isVacant){
-             h.r[i][j].isVacant = false;
-             strcpy(h.r[i][j].name, n);
-             h.r[i][j].days = d;
-             h.r[i][j].bill = h.r[i][j].bill;
+      		for (j=0; j<5; j++)
+       			if (h.r[i][j].num == RoomNum && h.r[i][j].isVacant){
+            	 	h.r[i][j].isVacant = false;
+             		strcpy(h.r[i][j].name, n);
+             		h.r[i][j].days = d;
+             		h.r[i][j].bill = h.r[i][j].bill;
         }
         
         cout << "\nEnter any letter to proceed: ";
@@ -60,7 +87,7 @@ do{
     }
       
     
-    else if(choice == 3){
+    else if(choice == 3){
 	cout<<"Enter Room number: ";
 	cin >> RoomNum;			
 		
@@ -90,6 +117,30 @@ do{
 			cout<< "\nEnter any letter to proceed: ";
 			cin>> trash;
 			system("cls");
+	}
+	
+	else if(choice==5){
+		for(i=0; i<5; i++)
+			for(j=0; j<5; j++){
+			cout<< "\nRoom: " << h.r[i][j].num;
+			
+			if(!h.r[i][j].isVacant){
+				cout<< "\nVacant: False";
+				cout<< "\nTenant: "<<h.r[i][j].name;
+				cout<< "\nDays: "<<h.r[i][j].days;
+				cout<< "\nBill: "<<h.r[i][j].bill;
+			}
+			if(h.r[i][j].isVacant)
+				cout<< "\nVacant = True";
+			}
+			cout<< "\nEnter any letter to proceed: ";
+			cin>>trash;
+			system("cls");
+	}
+	
+	else if(choice == 6){
+		system("cls");
+		cout<< "Program is shutting down. Thank You!";
 	}
 
 
