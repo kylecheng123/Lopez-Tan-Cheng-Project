@@ -61,34 +61,36 @@ do{
       
     
     else if(choice == 3){
-			cout<<"Enter Room number: ";
-			cin >> RoomNum;
-			
-			if(h.r[i][j].num = RoomNum && h.r[i][j].isVacant == false){
-				h.r[i][j].isVacant = true;
-				strcpy(h.r[i][j].name, " ");
-				h.r[i][j].days = 0;
-				h.r[i][j].bill = 0;			
-			}
-			else
-				cout<< "Invalid Command";
-				cout<< "\nEnter any letter to proceed: ";
-				cin>> trash;
-				system("cls");
-		}
+	cout<<"Enter Room number: ";
+	cin >> RoomNum;			
 		
-		else if(choice == 4){
-			cout << "Enter surname of person: ";
-			cin >> n;
-			
-			if(SearchPerson(n, h) != 0)
-				cout<< SearchPerson(n, h);
-			else cout<< "Person cannot be found";
+	if(h.r[i][j].num = RoomNum && h.r[i][j].isVacant == false){
+		h.r[i][j].isVacant = true;
+		strcpy(h.r[i][j].name, " ");
+		h.r[i][j].days = 0;
+		h.r[i][j].bill = 0;			
+	}
+	
+	else
+		cout<< "Invalid Command";
+		cout<< "\nEnter any letter to proceed: ";
+		cin>> trash;
+		system("cls");
+	}
+		
+	else if(choice == 4){
+		cout << "Enter surname of person: ";
+		cin >> n;
+		
+		if(SearchPerson(n, h) != 0)
+			cout<< SearchPerson(n, h);
+		else 
+			cout<< "Person cannot be found";
 			
 			cout<< "\nEnter any letter to proceed: ";
 			cin>> trash;
 			system("cls");
-		}
+	}
 
 
     }while(choice != 6);
